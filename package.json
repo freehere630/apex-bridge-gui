@@ -1,0 +1,37 @@
+{
+  "name": "apex-bridge-gui",
+  "version": "1.0.0",
+  "description": "Apex LIS Standalone Bridge",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start:arrows": "electron . --mode=arrows",
+    "start:maglumi": "electron . --mode=maglumi",
+    "build:arrows": "electron-builder --config.productName=ArrowsBridge --config.win.executableName=ArrowsBridge --config.directories.output=dist-arrows",
+    "build:maglumi": "electron-builder --config.productName=MaglumiBridge --config.win.executableName=MaglumiBridge --config.directories.output=dist-maglumi"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "dotenv": "^16.4.5",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.apex.bridge",
+    "win": {
+      "target": "dir",
+      "sign": false,
+      "signAndEditExecutable": false
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "ui/**/*",
+      "bridges/**/*",
+      ".env"
+    ]
+  }
+}
